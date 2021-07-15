@@ -1,8 +1,8 @@
 import React from "react";
-import { FlatList, Text } from "react-native";
+import { FlatList, Text, Platform } from "react-native";
 import { useSelector } from "react-redux";
 import ProductItem from "../../components/ProductItem";
-
+import Colors from "../../constants/Colors";
 const ProductsOverviewScreen = (props) => {
   const products = useSelector((state) => state.products.availableProducts);
   return (
@@ -28,7 +28,8 @@ const ProductsOverviewScreen = (props) => {
     </>
   );
 };
-ProductsOverviewScreen.screenOptions = {
+ProductsOverviewScreen.navigationOptions = {
   headerTitle: "All products",
+  headerTintColor: Platform.OS === "android" ? "#fff" : Colors.accent,
 };
 export default ProductsOverviewScreen;
