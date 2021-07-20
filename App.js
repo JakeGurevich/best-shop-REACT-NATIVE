@@ -4,11 +4,12 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux";
 import ProductsNavigator from "./navigation/ShopNavigator";
-
+import cartReducer from "./store/reducers/cart";
 import productsReducer from "./store/reducers/products";
 
 const rootReducer = combineReducers({
   products: productsReducer,
+  cart: cartReducer,
 });
 
 const store = createStore(rootReducer);

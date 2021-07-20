@@ -25,7 +25,11 @@ const ProductItem = ({ image, title, price, ...props }) => {
             title="View Details"
             onPress={props.onViewDetails}
           ></Button>
-          <Button color={Colors.primary} title="To Cart"></Button>
+          <Button
+            color={Colors.primary}
+            title="To Cart"
+            onPress={props.onAddtoCart}
+          ></Button>
         </View>
       </View>
     </TouchableOpacity>
