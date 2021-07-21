@@ -9,8 +9,9 @@ const CartScreen = () => {
     <View style={styles.screen}>
       <View style={styles.summary}>
         <Text style={styles.summaryText}>
-          Total:<Text style={styles.amount}>{cartTotalAmount}</Text>
+          Total:<Text style={styles.amount}>${cartTotalAmount}</Text>
         </Text>
+        <Button title="Order Now" color={Colors.primary} />
       </View>
     </View>
   );
