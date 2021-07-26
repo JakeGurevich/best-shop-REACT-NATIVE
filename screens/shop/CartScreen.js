@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Colors from "../../constants/Colors";
 import CartItem from "../../components/CartItem";
 import * as cartActions from "../../store/actions/cart";
+import * as ordersActions from "../../store/actions/orders";
 
 const CartScreen = () => {
   const cartTotalAmount = useSelector((state) => state.cart.totalAmount);
@@ -18,7 +19,9 @@ const CartScreen = () => {
         sum: state.cart.items[key].sum,
       });
     }
-    return transformedCartItems;
+    return transformedCartItems.sort((a, b) =>
+      a.productPrice < b.productPrice ? 1 : -1
+    );
   });
   const dispatch = useDispatch();
 
@@ -32,6 +35,9 @@ const CartScreen = () => {
           title="Order Now"
           color={Colors.primary}
           disabled={cartItems.length === 0}
+          onPress={() => {
+            dispatch(ordersActions.addOrder(cartItems, cartTotalAmount));
+          }}
         />
       </View>
       <View>
@@ -77,4 +83,7 @@ const styles = StyleSheet.create({
     color: Colors.primary,
   },
 });
+export const screenOptions = {
+  headerTitle: "Your Cart",
+};
 export default CartScreen;
